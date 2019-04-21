@@ -14,7 +14,7 @@ with open('./testing0.json') as i:
     counts={}
     totalpacketcount=0
     index=1 
-    print("index\t\tpacket size (bytes)\tNth packet with <packet_size>\t\ttime stamp\t\t\ttime delta")
+    print("index\t\tpacket size (bytes)\tNth packet with <packet_size>\t\ttime stamp\t\t\t\ttime delta\t\tpacket type")
     for packet in a:
         
         totalpacketcount = totalpacketcount + 1
@@ -33,21 +33,9 @@ with open('./testing0.json') as i:
 
 
         if packet_size in counts:
-#            print(repr(index).ljust(2), end = ' ')
- #           print(repr(packet_size).rjust(3), end=' ')
- #           print(repr(counts[packet_size]).ljust(4), end=' ')
- #           print(repr(time_stamp).rjust(5), end='')
-  #          print(repr(time_delta).ljust(4), '\n')
-            #print(repr(packet_type_subtype).rjust(4), end=' ')
-            #print(repr(mac_time).ljust(4), end=' ')
-            #print(repr(signal).rjust(4), end=' ')
-            #print(repr(channel).ljust(4), end=' ')
-            #print(repr(sa).rjust(4), end=' ')
-            #print(repr(da).ljust(4), end=' ')
-            #print(repr(data_data).rjust(4), '\n')
 
-            print("{}\t\t\t{}\t\t\t"
-                "{}\t\t\t\t{}\t\t\t{}".format(index, packet_size, counts[packet_size], time_stamp, time_delta), '\n')
+            print("{}\t\t\t{}\t\t\t{}\t\t\t\t{}\t\t\t"
+                  "{}\t\t{}".format(index, packet_size, counts[packet_size], time_stamp, time_delta, packet_type), '\n')
 
             index = index + 1
             counts[packet_size] = counts[packet_size] + 1
@@ -56,10 +44,11 @@ with open('./testing0.json') as i:
             counts[packet_size] = 1
             #counts[time_stamp] = 1
 
-print("index\t\tpacket size (bytes)\tNth packet with <packet_size>\t\ttime stamp\t\t\ttime delta")
+print("index\t\tpacket size (bytes)\tNth packet with <packet_size>\t\ttime stamp\t\t\t\ttime delta\t\tpacket type")
 
 
 packetslost = totalpacketcount-index
-print("TOTAL PACKET COUNT: {}".format(totalpacketcount), '\n')
+
+print('\n'"TOTAL PACKET COUNT: {}".format(totalpacketcount), '\n')
 print("PACKETS OMITTED(DUPLICATES?) = {}".format(packetslost),'\n')
 print(counts,'\n')
