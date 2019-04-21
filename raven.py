@@ -14,7 +14,7 @@ with open('./testing0.json') as i:
     counts={}
     totalpacketcount=0
     index=1 
-    print("index\t\tpacket size (bytes)\tNth packet with <packet_size>\t\t\ttime stamp\t\t\ttime delta")
+    print("index\t\tpacket size (bytes)\tNth packet with <packet_size>\t\ttime stamp\t\t\ttime delta")
     for packet in a:
         
         totalpacketcount = totalpacketcount + 1
@@ -46,7 +46,8 @@ with open('./testing0.json') as i:
             #print(repr(da).ljust(4), end=' ')
             #print(repr(data_data).rjust(4), '\n')
 
-            print("{}\t\t\t{}\t\t\t{}\t\t\t\t{}\t\t\t{}".format(index, packet_size, counts[packet_size], time_stamp, time_delta), '\n')
+            print("{}\t\t\t{}\t\t\t"
+                "{}\t\t\t\t{}\t\t\t{}".format(index, packet_size, counts[packet_size], time_stamp, time_delta), '\n')
 
             index = index + 1
             counts[packet_size] = counts[packet_size] + 1
@@ -55,7 +56,7 @@ with open('./testing0.json') as i:
             counts[packet_size] = 1
             #counts[time_stamp] = 1
 
-print("index\t\tpacket size (bytes)\tNth packet with <packet_size>\t\t\ttime stamp\t\t\ttime delta")
+print("index\t\tpacket size (bytes)\tNth packet with <packet_size>\t\ttime stamp\t\t\ttime delta")
 
 
 packetslost = totalpacketcount-index
